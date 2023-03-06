@@ -1,9 +1,19 @@
 <section class="home-page">
-    <h3 class="h5">Generate My Site</h3>
-
-    <form action="" method="post" class="row">
-        <input type="text" name="name" id="name">
-        <input type="email" name="email" id="email">
+    <h3 class="h5 tac reduce-margin">{{title}}</h3>
+    <form action="#" class="col gap-8 form">
+        <div class="col gap-8">
+            {{#each fields}}
+            <label class="label" for="{{this.name}}">{{this.name}}</label>
+            <input type="{{this.type}}" placeholder="{{this.placeholder}}" maxlength="{{this.maxlength}}"
+                minlength="{{this.minlength}}" name="{{this.name}}" required="true">
+            {{/each}}
+        </div>
+        <button type="submit" class="btn-1">Submit</button>
     </form>
 
+    <script>
+        function handleSubmit(e) {
+            console.log("Called function: ", e);
+        };
+    </script>
 </section>
