@@ -1,19 +1,18 @@
 <section class="home-page">
     <h3 class="h5 tac reduce-margin">{{title}}</h3>
-    <form action="#" class="col gap-8 form">
+    <form action="#" id="profile" class="col gap-8 form">
         <div class="col gap-8">
             {{#each fields}}
             <label class="label" for="{{this.name}}">{{this.name}}</label>
-            <input type="{{this.type}}" placeholder="{{this.placeholder}}" maxlength="{{this.maxlength}}"
+            <input class="input" type="{{this.type}}" placeholder="{{this.placeholder}}" maxlength="{{this.maxlength}}"
                 minlength="{{this.minlength}}" name="{{this.name}}" required="true">
             {{/each}}
+            <input type="hidden" id="links-holder">
+
+            <textarea placeholder="Paste links seperated by comma" rows="8" name="links" id="links"
+                class="social-links-input"></textarea>
+            <div class="row urls center"></div>
         </div>
         <button type="submit" class="btn-1">Submit</button>
     </form>
-
-    <script>
-        function handleSubmit(e) {
-            console.log("Called function: ", e);
-        };
-    </script>
 </section>
