@@ -1,0 +1,29 @@
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #dffff4;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.tac {
+  text-align: center;
+}
