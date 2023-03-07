@@ -16,7 +16,7 @@ module.exports = {
         name: "bio",
         placeholder: "Your Intro",
         type: "text",
-        maxlength: "60",
+        maxlength: "80",
         minlength: "10"
     }, {
         name: "image",

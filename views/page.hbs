@@ -1,11 +1,15 @@
 <head>
     <title>Nice Page !</title>
 </head>
-<section class="view-profile">
+<section {{!-- style="background: url({{image}});" --}} class="view-profile">
+    {{#if error}}
+    <h1 class="h6" style="color: red;">Query Parameters Error</h1>
+    <a href="/" class="btn-1">Home</a>
+    {{else}}
     <main class="bg justify-between card">
-        <img class="avatar"
-            src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg"
-            alt="Avatar">
+        {{#if display.image}}
+        <img class="avatar" src="{{image}}" alt="Avatar">
+        {{/if}}
         <article class="col" style="min-width: 50%;flex-grow: 1;text-align: start;">
             <span class="{{font}}" style="font-size: 4rem;font-weight: 500; margin: 0.1rem 0;">{{profile.name}}</span>
             <span class="h7 bio {{font}}">{{profile.bio}}</span>
@@ -15,12 +19,13 @@
                     <iconify-icon icon="ion:mail-open" width="22" height="22"></iconify-icon>
                 </span>
                 {{#each links}}
-                <span class="badge row center">
+                <a href="{{this}}" target="_blank" rel="noreferrer" class="badge row center">
                     <iconify-icon icon="akar-icons:twitter-fill" width="22" height="22"></iconify-icon>
-                </span>
+                </a>
                 {{/each}}
             </div>
             {{/if}}
         </article>
     </main>
+    {{/if}}
 </section>
