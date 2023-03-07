@@ -1,54 +1,33 @@
 var express = require('express');
 var router = express.Router();
-
-const fields = [{
-  name: "name",
-  placeholder: "Your Name",
-  type: "text",
-  maxlength: "20",
-  minlength: "3"
-},
-{
-  name: "email",
-  placeholder: "Your Email",
-  maxlength: "50",
-  type: "email"
-},
-{
-  name: "bio",
-  placeholder: "Your Intro",
-  type: "text",
-  maxlength: "60",
-  minlength: "10"
-}, {
-  name: "image",
-  placeholder: "Picture URL",
-  type: "text",
-  minlength: "10"
-},];
-
-const options = [
-  {
-    name: "enable_profile",
-    placeholder: "Enable Profile Picture",
-    type: "checkbox",
-  }, {
-    name: "enable_links",
-    placeholder: "Enable Links",
-    type: "checkbox",
-  },
-]
-
-const linkFields = [{
-  name: "links",
-  placeholder: "Your Links",
-  type: "text",
-  minlength: "10"
-}];
+var { fields, options } = require("../assets/input");
 
 router.get('/', function (req, res, next) {
-  
   res.render('index', { title: 'Generate My Site', fields, options });
+});
+
+router.post('/generate', async (req, res, next) => {
+  console.log("BODY: ", req.body);
+  res.render('page', {});
+});
+
+router.get('/generate', async (req, res, next) => {
+
+  console.log("Q: ", req.query);
+  let { links, enable_profile, enable_links, font, ...profile } = req.query;
+
+  console.log(`PROFILE: `, profile);
+
+  const display = {
+    links: enable_links === "on" ?? false,
+    image: enable_profile === "on" ?? false
+  };
+
+  links = links.split(",");
+
+  console.log(display);
+
+  res.render('page', { display, links, profile, font });
 });
 
 module.exports = router;

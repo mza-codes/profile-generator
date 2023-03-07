@@ -1,0 +1,26 @@
+<head>
+    <title>Nice Page !</title>
+</head>
+<section class="view-profile">
+    <main class="bg justify-between card">
+        <img class="avatar"
+            src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg"
+            alt="Avatar">
+        <article class="col" style="min-width: 50%;flex-grow: 1;text-align: start;">
+            <span class="{{font}}" style="font-size: 4rem;font-weight: 500; margin: 0.1rem 0;">{{profile.name}}</span>
+            <span class="h7 bio {{font}}">{{profile.bio}}</span>
+            {{#if display.links}}
+            <div class="row">
+                <span class="badge row center">
+                    <iconify-icon icon="ion:mail-open" width="22" height="22"></iconify-icon>
+                </span>
+                {{#each links}}
+                <span class="badge row center">
+                    <iconify-icon icon="akar-icons:twitter-fill" width="22" height="22"></iconify-icon>
+                </span>
+                {{/each}}
+            </div>
+            {{/if}}
+        </article>
+    </main>
+</section>
