@@ -29,6 +29,11 @@
             </div>
             {{/each}}
 
+            <div class="row">
+                <label for="font_color" class="label">Font Color</label>
+                <input type="color" name="font_color" value="#111" id="font_color">
+            </div>
+
             <div class="row vc-center">
                 <label for="font" class="label">Select Font</label>
                 <select name="font" id="font" class="input">
@@ -46,6 +51,18 @@
                 {{#each colorValue}}
                 <input value="#ffecdf" maxlength="50" type="{{this.type}}" name="{{this.name}}" id="{{this.name}}">
                 {{/each}}
+            </div>
+
+            <div class="row vc-center">
+                <label class="label" for="mode">Select Gradient Direction</label>
+                <select name="mode" id="mode" class="input">
+                    <option class="value" style="padding: 12px;" value="to right">to right</option>
+                    <option class="value" style="padding: 12px;" value="to bottom right">to bottom right</option>
+                    <option class="value" style="padding: 12px;" value="to left">to left</option>
+                    <option class="value" style="padding: 12px;" value="to bottom left">to bottom left</option>
+                    <option class="value" style="padding: 12px;" value="to bottom">to bottom</option>
+                    <option class="value" style="padding: 12px;" value="to top">to top</option>
+                </select>
             </div>
         </div>
         <button type="submit" class="btn-1">Submit</button>

@@ -33,7 +33,7 @@ router.get('/generate', async (req, res, next) => {
 
   console.log(extLinks);
 
-  res.render('page', { display, extLinks, profile, font, image, error });
+  res.render('profile', { display, extLinks, profile, font, image, error });
 });
 
 module.exports = router;
