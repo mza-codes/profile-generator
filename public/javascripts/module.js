@@ -5,12 +5,14 @@ const options = {
     links: "enable_links"
 };
 
+const icons = ["akar-icons:twitter-fill", "fe:github", "ic:baseline-facebook", "uil:instagram-alt",
+    "uiw:linkedin", "mingcute:external-link-fill"];
+
 if (document.readyState !== "loading" && location.pathname === "/") {
 
     const field = document.querySelector("#links");
     const urlParent = document.querySelector(".urls");
     const form = document.querySelector("#profile"); // #profile
-    let linksHolder = [];
 
     const inputs = {
         image: document.querySelector("#image"),
@@ -30,14 +32,18 @@ if (document.readyState !== "loading" && location.pathname === "/") {
 
     function handleTagChange(e) {
         const links = e.target?.value?.split(",");
-        linksHolder = [];
+        urlParent.querySelectorAll("span")?.forEach(node => urlParent.removeChild(node));
 
         links.forEach((url, i) => {
             if (!url || url?.length <= 0 || url?.trim()?.length <= 0) return;
-            const el = document.createElement("span");
-            el.textContent = `#${i + 1}`;
-            urlParent.appendChild(el);
-            linksHolder.push(url);
+            if (!isValidURL(url)) {
+                field.classList.add("error");
+                return;
+            };
+            field.classList.remove("error");
+            const span = document.createElement("span");
+            span.innerHTML = `<iconify-icon icon="${icons[i] ?? "mingcute:external-link-fill"}" width="22" height="22"></iconify-icon>`
+            urlParent.appendChild(span);
         });
         console.log("FINAL ARR:", links);
         return;
@@ -47,7 +53,6 @@ if (document.readyState !== "loading" && location.pathname === "/") {
         e.preventDefault();
 
         const formData = new FormData(e.target);
-        formData.append("links", linksHolder);
         formData.forEach((val, key) => {
             console.log(key, val);
         });
@@ -68,3 +73,12 @@ if (document.readyState !== "loading" && location.pathname === "/") {
         }; return;
     };
 }
+
+function isValidURL(url) {
+    try {
+        new URL(url);
+        return true;
+    } catch (err) {
+        return false;
+    };
+};

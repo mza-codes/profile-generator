@@ -1,14 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var { fields, options } = require("../assets/input");
+var { fields, options, colorValue } = require("../assets/input");
+const icons = ["akar-icons:twitter-fill", "fe:github", "ic:baseline-facebook", "uil:instagram-alt",
+  "uiw:linkedin", "mingcute:external-link-fill"];
 
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Generate My Site', fields, options });
+  res.render('index', { title: 'Generate My Site', fields, options, colorValue });
 });
 
 router.get('/generate', async (req, res, next) => {
   let error = false;
   let { links, enable_profile, enable_links, font, image, ...profile } = req.query;
+  console.log("PROFILE: ", profile);
 
   if (!profile || !profile?.name) {
     error = true;
@@ -23,9 +26,14 @@ router.get('/generate', async (req, res, next) => {
   image = display.image && !isValid ? `https://source.unsplash.com/random` : image;
 
   links = links?.split(",") ?? [];
-  console.log(display);
+  const extLinks = display.links ? links.map((url, i) => ({
+    url,
+    icon: icons[i] ?? "mingcute:external-link-fill"
+  })) : false;
 
-  res.render('page', { display, links, profile, font, image, error });
+  console.log(extLinks);
+
+  res.render('page', { display, extLinks, profile, font, image, error });
 });
 
 module.exports = router;

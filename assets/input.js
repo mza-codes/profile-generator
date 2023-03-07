@@ -36,6 +36,21 @@ module.exports = {
             type: "checkbox",
         },
     ],
+    colorValue: [{
+        name: "primary",
+        placeholder: "Primary Color",
+        type: "color"
+    },
+    {
+        name: "secondary",
+        placeholder: "Secondary Color",
+        type: "color",
+    }, {
+        name: "tertiary",
+        placeholder: "Tertiary Color",
+        type: "color",
+    },
+    ],
 
     linkFields: [{
         name: "links",
