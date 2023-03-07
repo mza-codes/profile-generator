@@ -1,0 +1,94 @@
+<style>
+    .profile-page {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        min-height: 100vh;
+        padding: 0 14px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .profile-pic {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        min-width: 280px;
+        border: 8px solid transparent;
+        outline: 3px solid #ffd621;
+        aspect-ratio: 1/1;
+    }
+
+    .article {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        text-align: start;
+    }
+
+    .download {
+        position: fixed;
+        right: 4px;
+        bottom: 4px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .icons-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 50vw;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 1180px) {
+        .icons-container {
+            max-width: 86vw;
+        }
+    }
+</style>
+<section class="view-profile0 profile-page"
+    style="background: linear-gradient({{profile.mode}},{{profile.primary}},{{profile.secondary}},{{profile.tertiary}});">
+
+    {{#if error}}
+    <h1 class="h6" style="color: red;">Query Parameters Error</h1>
+    <a href="/" class="btn-1">Home</a>
+    {{else}}
+
+    {{#if display.image}}
+    <img class="profile-pic" src="{{image}}" alt="Avatar">
+    {{/if}}
+
+    <article class="article">
+        <span class="{{font}}"
+            style="font-size: 4rem;font-weight: 500; margin: 0.1rem 0;color: {{profile.font_color}};">{{profile.name}}</span>
+        <span class="h7 bio {{font}}" style="color: {{profile.font_color}};">{{profile.bio}}</span>
+
+        {{#if display.links}}
+        <div style="color: {{profile.font_color}};" class="icons-container ">
+            <a href="mailto:{{profile.email}}" target="_blank" rel="noreferrer" class="badge row center">
+                <iconify-icon icon="ion:mail-open" width="22" height="22"></iconify-icon>
+            </a>
+            {{#each extLinks}}
+            <a href="{{this.url}}" target="_blank" rel="noreferrer" class="badge row center">
+                <iconify-icon icon="{{this.icon}}" width="22" height="22"></iconify-icon>
+            </a>
+            {{/each}}
+        </div>
+        {{/if}}
+
+    </article>
+
+    {{/if}}
+    <button class="btn-1 download hide show">
+        <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)"
+            href="#" download="page.html">Download</a>
+    </button>
+</section>

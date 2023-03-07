@@ -1,5 +1,5 @@
 <section class="home-page">
-    <h3 class="h5 tac reduce-margin">{{title}}</h3>
+    <h3 class="h5 tac reduce-margin">{{brand}}</h3>
     <form action="/generate" method="get" id="profile" class="col gap-8 form">
         <div class="col gap-8">
 
@@ -16,8 +16,10 @@
             </div>
 
             <label for="links" class="label">Socail Links</label>
-            <textarea placeholder="Paste links seperated by comma. (Twitter,Github,Facebook,Instagram,...others)"
+            <textarea
+                placeholder="Paste links seperated by comma. (Twitter, Github, Facebook, Instagram, LinkedIN, ...others)"
                 rows="8" name="links" id="links" class="social-links-input"></textarea>
+            <p style="color:red;font-weight: 300;margin: 0;">Please Follow the correct order while pasting links!</p>
             <div class="row urls center"></div>
 
             {{#each options}}
@@ -27,6 +29,11 @@
             </div>
             {{/each}}
 
+            <div class="row">
+                <label for="font_color" class="label">Font Color</label>
+                <input type="color" name="font_color" value="#0e0d0d" id="font_color">
+            </div>
+
             <div class="row vc-center">
                 <label for="font" class="label">Select Font</label>
                 <select name="font" id="font" class="input">
@@ -35,6 +42,26 @@
                     <option class="option abel" value="abel">Abel</option>
                     <option class="option righteous" value="righteous">Righteous</option>
                     <option class="option poppins" value="poppins">Poppins</option>
+                </select>
+                <input type="url" name="background" value="https://source.unsplash.com/random" id="background"
+                    class="input" placeholder="Add Backgroud Image">
+            </div>
+            <label class="label" for="color">Select Color Scheme</label>
+            <div class="row">
+                {{#each colorValue}}
+                <input value="#ffecdf" maxlength="50" type="{{this.type}}" name="{{this.name}}" id="{{this.name}}">
+                {{/each}}
+            </div>
+
+            <div class="row vc-center">
+                <label class="label" for="mode">Select Gradient Direction</label>
+                <select name="mode" id="mode" class="input">
+                    <option class="value" style="padding: 12px;" value="to right">to right</option>
+                    <option class="value" style="padding: 12px;" value="to bottom right">to bottom right</option>
+                    <option class="value" style="padding: 12px;" value="to left">to left</option>
+                    <option class="value" style="padding: 12px;" value="to bottom left">to bottom left</option>
+                    <option class="value" style="padding: 12px;" value="to bottom">to bottom</option>
+                    <option class="value" style="padding: 12px;" value="to top">to top</option>
                 </select>
             </div>
         </div>
