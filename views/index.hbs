@@ -1,17 +1,42 @@
 <section class="home-page">
     <h3 class="h5 tac reduce-margin">{{title}}</h3>
-    <form action="#" id="profile" class="col gap-8 form">
+    <form action="/generate" method="get" id="profile" class="col gap-8 form">
         <div class="col gap-8">
-            {{#each fields}}
-            <label class="label" for="{{this.name}}">{{this.name}}</label>
-            <input class="input" type="{{this.type}}" placeholder="{{this.placeholder}}" maxlength="{{this.maxlength}}"
-                minlength="{{this.minlength}}" name="{{this.name}}" required="true">
-            {{/each}}
-            <input type="hidden" id="links-holder">
 
-            <textarea placeholder="Paste links seperated by comma" rows="8" name="links" id="links"
-                class="social-links-input"></textarea>
+            <div class="row center">
+                {{#each fields}}
+                <div class="col">
+                    <label class="label" for="{{this.name}}">{{this.name}}</label>
+                    <input class="input" type="{{this.type}}" placeholder="{{this.placeholder}}"
+                        maxlength="{{this.maxlength}}" minlength="{{this.minlength}}" name="{{this.name}}"
+                        id="{{this.name}}" required="true">
+                </div>
+                {{/each}}
+                <input type="hidden" id="links-holder">
+            </div>
+
+            <label for="links" class="label">Socail Links</label>
+            <textarea placeholder="Paste links seperated by comma. (Twitter,Github,Facebook,Instagram,...others)"
+                rows="8" name="links" id="links" class="social-links-input"></textarea>
             <div class="row urls center"></div>
+
+            {{#each options}}
+            <div class="row">
+                <label for="{{this.name}}" class="label">{{this.placeholder}}</label>
+                <input type={{this.type}} name="{{this.name}}" id="{{this.name}}" checked="true" class="input">
+            </div>
+            {{/each}}
+
+            <div class="row vc-center">
+                <label for="font" class="label">Select Font</label>
+                <select name="font" id="font" class="input">
+                    <option class="option urbanist" value="urbanist">Urbanist</option>
+                    <option class="option kanit" value="kanit">Kanit</option>
+                    <option class="option abel" value="abel">Abel</option>
+                    <option class="option righteous" value="righteous">Righteous</option>
+                    <option class="option poppins" value="poppins">Poppins</option>
+                </select>
+            </div>
         </div>
         <button type="submit" class="btn-1">Submit</button>
     </form>
