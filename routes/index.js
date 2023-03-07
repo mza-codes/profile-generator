@@ -47,7 +47,7 @@ const linkFields = [{
 }];
 
 router.get('/', function (req, res, next) {
-
+  
   res.render('index', { title: 'Generate My Site', fields, options });
 });
 

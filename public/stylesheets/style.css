@@ -29,8 +29,20 @@
   justify-content: center;
 }
 
+.hz-center {
+  justify-content: center;
+}
+
+.vc-center {
+  align-items: center;
+}
+
 .tac {
   text-align: center;
+}
+
+.form {
+  padding: 10px 12px;
 }
 
 .form .input {
@@ -76,8 +88,7 @@
   border-radius: 4px;
   font-size: 1rem;
   font-weight: 400;
-  resize: vertical;
-  color: rgb(0, 110, 110);
+  resize: none;
 }
 
 .social-links-input::placeholder {
@@ -96,4 +107,8 @@
   background-color: rgb(0, 202, 135);
   color: #fff;
   margin: 4px;
+}
+
+.option {
+  font-size: 1.3rem;
 }
