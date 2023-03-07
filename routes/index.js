@@ -27,6 +27,18 @@ const fields = [{
   minlength: "10"
 },];
 
+const options = [
+  {
+    name: "enable_profile",
+    placeholder: "Enable Profile Picture",
+    type: "checkbox",
+  }, {
+    name: "enable_links",
+    placeholder: "Enable Links",
+    type: "checkbox",
+  },
+]
+
 const linkFields = [{
   name: "links",
   placeholder: "Your Links",
@@ -36,7 +48,7 @@ const linkFields = [{
 
 router.get('/', function (req, res, next) {
 
-  res.render('index', { title: 'Generate My Site', fields });
+  res.render('index', { title: 'Generate My Site', fields, options });
 });
 
 module.exports = router;

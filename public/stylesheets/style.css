@@ -46,6 +46,10 @@
   font-weight: 500;
 }
 
+.input:checked~label {
+  display: none;
+}
+
 .btn-1 {
   padding: 8px 14px;
   outline: none;
