@@ -5,10 +5,15 @@
   justify-content: center;
   flex-direction: column;
   background-color: #dffff4;
+  color: #0e0d0d;
 }
 
 .form {
   padding: 10px 12px;
+}
+
+.show {
+  display: block !important;
 }
 
 .form .input {
