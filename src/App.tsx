@@ -1,22 +1,18 @@
-import Loader from "./components/Loader";
+// const bg = `https://static.vecteezy.com/system/resources/previews/002/774/528/original/teamwork-illustration-concept-worker-helping-each-other-for-business-group-free-vector.jpg`;
+const bg2 = `https://s3.amazonaws.com/designsai.prod.graphicmakercrm/illustrations/04.%20Helping%20Someone_1588933719.svg`;
 
 function App() {
   return (
-    <main
-      className="bg-gradient-to-tr from-green-300 via-red-300 to-fuchsia-300 flex-col gap-3 
-      min-h-screen w-full flex items-center justify-center text-center"
-    >
-      <div
-        className="bg-emerald-900 bg-opacity-50 hover:bg-opacity-100 w-64 h-72 flex items-center flex-col justify-center
-        rounded-lg text-2xl p-4 font-semibold font-poppins text-white"
-      >
-        Hello World
-        <Loader color="#f8f8f8" inline={1} />
-      </div>
-      <p className="font-poorStory text-5xl font-semibold">Vite + TS</p>
-        <span className="font-righteous text-2xl font-medium">Powered By: TailwindCSS</span>
-      <span className="font-righteous text-2xl font-medium">mza-codes</span>
-    </main>
+    <section className="min-h-screen relative bg-[#ffe1be] flex justify-between items-center flex-wrap gap-2" >
+
+      <img className="object-cover w-full lg:w-1/2 h-full aspect-auto max-h-screen" src={bg2} alt="_image" />
+
+      <article className="w-full lg:w-1/2 flex-grow flex flex-col gap-3 flex-wrap text-start justify-center" >
+        <h1 className="z-50 text-5xl font-righteous text-gray-800">Looking for Help ? Here it is!</h1>
+        <span className="text-3xl font-medium font-kanit" >We help you by providing the opportunity to learn & adapt from the most experienced professionals in various fields.</span>
+      </article>
+
+    </section>
   );
 }
 
