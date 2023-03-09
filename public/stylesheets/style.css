@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #dffff4;
+  /* background-color: #ffdfe9; */
+  background: linear-gradient(to bottom right, #ffc6db,#ffdeb7);
   color: #0e0d0d;
 }
 
