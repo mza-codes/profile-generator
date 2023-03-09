@@ -5,17 +5,20 @@ const icons = ["akar-icons:twitter-fill", "fe:github", "ic:baseline-facebook", "
   "uiw:linkedin", "mingcute:external-link-fill"];
 
 router.get('/', function (req, res, next) {
-  res.render('index', { brand: 'Generate My Site', title: "Profile Generator", fields, options, colorValue });
+  res.render('index', { brand: 'Generate My Site', title: "Profile Generator", hide: false, method: "POST", fields, options, colorValue });
 });
 
-router.get('/generate', async (req, res, next) => {
+router.use('/generate', async (req, res, next) => {
   let error = false;
   let { links, enable_profile, enable_links, font, image, ...profile } = req.query;
-  console.log("PROFILE: ", profile);
+
+  if (req.method === "POST") {
+    ({ links, enable_profile, enable_links, font, image, ...profile } = req.body);
+  };
 
   if (!profile || !profile?.name) {
     error = true;
-    return res.render('profile', { display, extLinks, profile, font, image, error, title });
+    return res.render('profile', { error, hide: true });
   };
 
   const display = {
@@ -32,10 +35,10 @@ router.get('/generate', async (req, res, next) => {
     icon: icons[i] ?? "mingcute:external-link-fill"
   })) : false;
 
-  console.log(extLinks);
   const title = `${profile?.name ?? "Profile Generator"}`;
+  const hide = true;
 
-  res.render('profile', { display, extLinks, profile, font, image, error, title });
+  return res.render('profile', { display, extLinks, profile, font, image, error, title, hide });
 });
 
 module.exports = router;
